@@ -15,12 +15,12 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+        stage('Run Container') {
             steps {
                 sh '''
                     docker stop myapp || true
                     docker rm myapp || true
-                    docker run -d --name myapp -p 3000:3000 myapp:latest
+                    docker run -d --name myapp -p 8081:80 myapp:latest
                 '''
             }
         }
